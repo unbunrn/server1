@@ -1,5 +1,3 @@
-小程序ID：wxdf8879f706020150
-小程序密钥：f1dd8833bbce2df2170efdfef57f4f2c
 
 # 安装 express
 npm install express --save
