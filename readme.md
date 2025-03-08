@@ -23,6 +23,7 @@ npm install axios --save
 # MongoDB 启动命令
 mongod --dbpath E:\mongodb-win32-x86_64-enterprise-windows-8.0.4\data\db
 
+# 分类标签
 一级分类: [
   '卡证类', 
   '生活用品', 
