@@ -94,6 +94,9 @@ const UserMgSchema = new mongoose.Schema({
   openid: {
     type: String,
   },
+  create_time: {
+    type: Number, 
+  }
 });
 
 // 管理员账号
@@ -137,6 +140,13 @@ const Admin = mongoose.model("Admin", AdminSchema);
 //    imgList:["http://localhost:3000/file/aa5b9c34-1ac0-44ea-b6b9-6799c75729c8.jpg"]
 //   })
 // }
+  // Admin.create({
+  //   username: "1",
+  //   password: "16",
+  //   create_time: 1740979475429, 
+  //   role: 0,
+  //   nickname: "test",
+  // })
 
 module.exports = {
   Lose,
