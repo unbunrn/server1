@@ -125,11 +125,11 @@ const Collection = mongoose.model("Collection", CollectionMgSchema);
 const User = mongoose.model("User", UserMgSchema);
 const Admin = mongoose.model("Admin", AdminSchema);
 
-// for(let i=0;i<20;i++){
+// for(let i=0;i<10;i++){
 //   Lose.create({
 //    openid:"od1X06_nURFtbUSqAS49ktJz5cog" ,
 //    type:1,
-//    classify1:"电子产品",
+//    classify1:"数码产品",
 //    classify2:"手机",
 //    name:"手机",
 //    date:"2021-01-01",

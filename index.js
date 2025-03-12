@@ -77,7 +77,7 @@ app.post("/uploadImg", upload.array("file", 6), (req, res) => {
 // 获取首页的数据
 app.get("/getLose", async (req, res) => {
   const { type } = req.query;
-  const result = await Lose.find({ type });
+  const result = await Lose.find({ type }).sort({ time: -1 });// 按时间倒序排序
   res.send(result);
 });
 
@@ -214,6 +214,65 @@ app.post("/tologin", async (req, res) => {
       res.send("pwdError");
     }
   } else {
+    res.send("error");
+  }
+});
+
+// 小程序端删除寻主/寻物数据
+app.post("/delLose", async (req, res) => {
+  const { _id } = req.body;
+  try {
+    await Lose.findOneAndDelete({ _id });
+    await Collection.deleteMany({ id: _id });
+    res.send("success");
+  } catch (error) {
+    res.send("error");
+  }
+});
+//获取物品详情信息
+app.post("/getLoseDetail", async (req, res) => {
+  const { _id } = req.body;
+  try {
+    const result = await Lose.findById({ _id });
+    res.send(result);
+  } catch (error) {
+    res.send("error");
+  }
+});
+
+//小程序修改发布的寻主/寻物信息
+app.post("/editLose", async (req, res) => {
+  const {
+    _id,
+    type,
+    classify1,
+    classify2,
+    name,
+    date,
+    region,
+    phone,
+    desc,
+    time,
+    imgList,
+  } = req.body;
+  try {
+    await Lose.findOneAndUpdate(
+      { _id },
+      {
+        type,
+        classify1,
+        classify2,
+        name,
+        date,
+        region,
+        phone,
+        desc,
+        time,
+        imgList,
+      }
+    );
+    res.send("success");
+  } catch (error) {
     res.send("error");
   }
 });
@@ -376,7 +435,7 @@ app.post("/admin/AddEditAdmin", async (req, res) => {
         role,
         nickname,
         create_time: Date.now(),
-      }); 
+      });
     }
     res.send("success");
   } catch (error) {
